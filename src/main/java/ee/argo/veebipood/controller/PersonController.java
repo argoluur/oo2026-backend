@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "*")
 
 @RestController
 public class PersonController {
@@ -33,9 +33,9 @@ public class PersonController {
         if (person.getId() != null){
             throw new RuntimeException("Cannot sign up with ID");
         }
-        return personRepository.save(person);  //salvestab
-
+        return personRepository.save(person);  //salvesta
     }
+
     @PostMapping("login")
     public Person login(@RequestBody PersonLoginRecordDto personDto){
         Person dbPerson = personRepository.findByEmail(personDto.email());
